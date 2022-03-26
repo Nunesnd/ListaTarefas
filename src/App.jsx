@@ -5,6 +5,7 @@ import {v4 as uuidv4} from 'uuid';
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 import Header from "./components/header";
+import TaskDetails from "./components/TaskDetails";
 
 import './App.css';
 
@@ -62,13 +63,14 @@ const App = () =>{
               <>
                 <AddTask handleTaskAddition={handleTaskAddition} />
                 <Tasks 
-                  tasks={tasks} 
-                  handleTaskClick={handleTaskClick} 
-                  handleTaskDeletion={handleTaskDeletion}/>
+                tasks={tasks} 
+                handleTaskClick={handleTaskClick} 
+                handleTaskDeletion={handleTaskDeletion}/>
               </>
             )}
           
           />
+          <Route path="" exact render={TaskDetails}/>
 
       </div>
     </Router>
