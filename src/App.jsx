@@ -70,7 +70,7 @@ const App = () =>{
             )}
           
           />
-          <Route path="" exact render={TaskDetails}/>
+          <Route path="/:tastTitle" exact component={TaskDetails}/>
 
       </div>
     </Router>
