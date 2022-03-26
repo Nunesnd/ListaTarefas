@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+
 import Tasks from "./components/Tasks";
-import './App.css';
 import AddTask from "./components/AddTask";
+
+import './App.css';
 
 const App = () =>{
   const [tasks, setTasks] = useState([
@@ -17,9 +19,20 @@ const App = () =>{
     },
   ]);
 
+  const handleTaskClick = (taskId) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) return { ...task, completed: !task.completed };
+
+      return task;
+    });
+
+    setTasks(newTasks);
+  };
+
   const handleTaskAddition = (taskTitle) =>{
     const newTask = [
-      ...tasks,{
+      ...tasks,
+      {
         title: taskTitle,
         id: Math.random(10),
         completed: false,
@@ -31,8 +44,12 @@ const App = () =>{
   return (
     <>
       <div className="container">
-        <AddTask handleTaskAddition={handleTaskAddition}/>
-        <Tasks tasks={tasks} />
+
+          <AddTask handleTaskAddition={handleTaskAddition} />
+          <Tasks 
+              tasks={tasks} 
+              handleTaskClick={handleTaskClick} />
+
       </div>
     </>
   );
